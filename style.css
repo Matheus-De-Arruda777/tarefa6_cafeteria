@@ -1,0 +1,420 @@
+/* ======================================= */
+/* CONFIGURAÇÕES GERAIS           */
+/* ======================================= */
+
+/* 1. Uso de CSS Variables para fácil manutenção de cores e fontes */
+:root {
+    --primary-color: #6F4E37; /* Marrom Café */
+    --secondary-color: #F5F5DC; /* Bege */
+    --accent-color: #D2B48C; /* Tan (detalhes) */
+    --text-color-dark: #333;
+    --text-color-light: #FFFFFF;
+    --background-light: #FDFBF5;
+    --font-primary: 'Roboto', sans-serif;
+    --font-headings: 'Playfair Display', serif;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 2. Reset básico e Box Sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /* 3. Scroll Suave */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--text-color-dark);
+    background-color: var(--background-light);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-container {
+    padding: 80px 0;
+}
+
+.section-bg-light {
+    background-color: #FFF;
+}
+
+.section-title {
+    font-family: var(--font-headings);
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-description {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+}
+
+/* ======================================= */
+/* CABEÇALHO E NAVEGAÇÃO          */
+/* ======================================= */
+.main-header {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px); /* 4. Efeito de vidro fosco */
+    box-shadow: var(--shadow);
+    /* 5. Posição Sticky para fixar no topo ao rolar */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.logo {
+    font-family: var(--font-headings);
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px; /* 6. Espaçamento entre itens */
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-color-dark);
+    font-weight: 500;
+    padding-bottom: 5px;
+    position: relative;
+    /* 7. Transition para animações suaves */
+    transition: color 0.3s ease-in-out;
+}
+
+/* 8. Pseudo-elemento para sublinhado animado */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+
+/* ======================================= */
+/* SEÇÃO HERO                 */
+/* ======================================= */
+#hero {
+    height: 90vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/hero-background.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-color-light);
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-title {
+    font-family: var(--font-headings);
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: background-color 0.3s, transform 0.2s; /* Animação dupla */
+}
+
+.cta-button:hover {
+    background-color: #c5a67c;
+    /* 9. Transform para efeito de escala */
+    transform: scale(1.05);
+}
+
+/* ======================================= */
+/* SEÇÃO SOBRE                */
+/* ======================================= */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.about-image img {
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.about-text h3 {
+    font-family: var(--font-headings);
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.about-text p {
+    margin-bottom: 1rem;
+}
+
+
+/* ======================================= */
+/* SEÇÃO MENU                 */
+/* ======================================= */
+/* 10. CSS Grid para um layout de menu flexível e responsivo */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.menu-category h3 {
+    font-family: var(--font-headings);
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.menu-item {
+    margin-bottom: 20px;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+}
+
+.item-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.item-price {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.item-description {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* ======================================= */
+/* SEÇÃO DESTAQUE (PARALLAX)    */
+/* ======================================= */
+#destaque {
+    padding: 100px 0;
+    color: var(--text-color-light);
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/special-background.jpg') no-repeat center center;
+    background-size: cover;
+    /* 11. Efeito Parallax */
+    background-attachment: fixed; 
+}
+
+.destaque-content h2 {
+    font-family: var(--font-headings);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.destaque-content p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ======================================= */
+/* SEÇÃO LOCALIZAÇÃO            */
+/* ======================================= */
+.location-content {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.location-text {
+    flex-basis: 40%; /* 12. Flex-basis para controle de tamanho */
+}
+
+.location-text p {
+    margin-bottom: 10px;
+}
+
+.location-map {
+    flex-basis: 60%;
+}
+
+.location-map iframe {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+
+/* ======================================= */
+/* FORMULÁRIO DE CONTATO        */
+/* ======================================= */
+.contact-form {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* 13. Estilização no estado :focus para melhor UX */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(111, 78, 55, 0.3);
+}
+
+.submit-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.submit-button:hover {
+    background-color: #5a3d2b;
+    transform: translateY(-2px);
+}
+
+/* ======================================= */
+/* RODAPÉ                  */
+/* ======================================= */
+.main-footer {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    padding: 30px 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-links a {
+    color: var(--text-color-light);
+    text-decoration: none;
+    margin-left: 15px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+/* ======================================= */
+/* 14. MEDIA QUERIES (RESPONSIVIDADE) */
+/* ======================================= */
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .nav-menu {
+        /* Em um projeto real, aqui entraria JS para um menu hamburguer */
+        display: none; 
+    }
+
+    .about-content, .location-content, .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image img {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .footer-content {
+        gap: 20px;
+    }
+}
